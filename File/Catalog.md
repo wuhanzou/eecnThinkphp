@@ -1,5 +1,11 @@
 ﻿网站目录结构
 
+**PHP框架**  
+[http://www.thinkphp.cn/down/610.html](ThinkPHP3.2.3完整版) 
+
+**后台前端框架**  
+[https://www.angularjs.org/](https://www.angularjs.org/) 
+
 www  WEB部署目录（或者子目录）
 │
 ├─index.php       前台入口文件
@@ -15,6 +21,8 @@ www  WEB部署目录（或者子目录）
 ├─.htaccess       路由器配置文件(apache专用)(可省略)
 │
 ├─Addons 插件目录
+│
+├─File 说明文档
 │  
 ├─Application 应用模块目录
 │  │
