@@ -22,9 +22,10 @@ define('APP_DEBUG', true );
 
 
 /**
- * 绑定Admin模块到当前入口文件
+ * 绑定Admin模块到当前入口文件,主要为了自动生成相应后台目录,生成完后,需屏蔽
  */
-define('BIND_MODULE','Admin');
+// define('BIND_MODULE','Admin');
+
 /**
  * 应用目录设置
  * 安全期间，建议安装调试完成后移动到非WEB目录
