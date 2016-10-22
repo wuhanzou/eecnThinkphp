@@ -129,6 +129,23 @@ function think_decrypt($data, $key = ''){
 }
 
 /**
+ * 数据签名认证
+ * @param  array  $data 被认证的数据
+ * @return string       签名
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function data_auth_sign($data) {
+    //数据类型检测
+    if(!is_array($data)){
+        $data = (array)$data;
+    }
+    ksort($data); //排序
+    $code = http_build_query($data); //url编码并生成query字符串
+    $sign = sha1($code); //生成签名
+    return $sign;
+}
+
+/**
 * 对查询结果集进行排序
 * @access public
 * @param array $list 查询结果
@@ -231,6 +248,25 @@ function format_bytes($size, $delimiter = '') {
 }
 
 /**
+ * 设置跳转页面URL
+ * 使用函数再次封装，方便以后选择不同的存储方式（目前使用cookie存储）
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function set_redirect_url($url){
+    cookie('redirect_url', $url);
+}
+
+/**
+ * 获取跳转页面URL
+ * @return string 跳转页URL
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function get_redirect_url(){
+    $url = cookie('redirect_url');
+    return empty($url) ? __APP__ : $url;
+}
+
+/**
  * 时间戳格式化
  * @param int $time
  * @return string 完整的时间显示
@@ -239,4 +275,177 @@ function format_bytes($size, $delimiter = '') {
 function time_format($time = NULL,$format='Y-m-d H:i'){
     $time = $time === NULL ? NOW_TIME : intval($time);
     return date($format, $time);
+}
+
+/**
+ * 根据用户ID获取用户名
+ * @param  integer $uid 用户ID
+ * @return string       用户名
+ */
+function get_username($uid = 0){
+    static $list;
+    if(!($uid && is_numeric($uid))){ //获取当前登录用户名
+        return session('user_auth.username');
+    }
+
+    /* 获取缓存数据 */
+    if(empty($list)){
+        $list = S('sys_active_user_list');
+    }
+
+    /* 查找用户信息 */
+    $key = "u{$uid}";
+    if(isset($list[$key])){ //已缓存，直接使用
+        $name = $list[$key];
+    } else { //调用接口获取用户信息
+        $User = new User\Api\UserApi();
+        $info = $User->info($uid);
+        if($info && isset($info[1])){
+            $name = $list[$key] = $info[1];
+            /* 缓存用户 */
+            $count = count($list);
+            $max   = C('USER_MAX_CACHE');
+            while ($count-- > $max) {
+                array_shift($list);
+            }
+            S('sys_active_user_list', $list);
+        } else {
+            $name = '';
+        }
+    }
+    return $name;
+}
+
+/**
+ * 根据用户ID获取用户昵称
+ * @param  integer $uid 用户ID
+ * @return string       用户昵称
+ */
+function get_nickname($uid = 0){
+    static $list;
+    if(!($uid && is_numeric($uid))){ //获取当前登录用户名
+        return session('user_auth.username');
+    }
+
+    /* 获取缓存数据 */
+    if(empty($list)){
+        $list = S('sys_user_nickname_list');
+    }
+
+    /* 查找用户信息 */
+    $key = "u{$uid}";
+    if(isset($list[$key])){ //已缓存，直接使用
+        $name = $list[$key];
+    } else { //调用接口获取用户信息
+        $info = M('Member')->field('nickname')->find($uid);
+        if($info !== false && $info['nickname'] ){
+            $nickname = $info['nickname'];
+            $name = $list[$key] = $nickname;
+            /* 缓存用户 */
+            $count = count($list);
+            $max   = C('USER_MAX_CACHE');
+            while ($count-- > $max) {
+                array_shift($list);
+            }
+            S('sys_user_nickname_list', $list);
+        } else {
+            $name = '';
+        }
+    }
+    return $name;
+}
+
+/**
+ * 调用系统的API接口方法（静态方法）
+ * api('User/getName','id=5'); (Common\Api\UserApi::getName)调用公共模块的User接口的getName方法
+ * api('Admin/User/getName','id=5');  (Admin\Api\UserApi::getName)调用Admin模块的User接口
+ * @param  string  $name 格式 [模块名]/接口名/方法名
+ * @param  array|string  $vars 参数
+ * @param  示例
+ * function test($a, $b) {
+        echo '测试一：'.$a.$b;
+    }//调用test方法,array("asp", 'php')对应相应的参数call_user_func_array('test', array("asp", 'php'));
+  *
+  *class test2{
+    function phpSay($a, $b) {
+        echo '测试二：'.$a.$b;
+        }
+    }
+    $o = new test2();
+    //相当于：$o->phpSay('php','你好');
+    call_user_func_array(array(&$o, 'phpSay'), array('php','你好')); 
+ *  我一般也很少用到这个函数，但是当动态调用类的静态方法时它还是有作用的：
+ *
+ * 在某某时间段($run_time)运行某函数或方法
+ *function task_add($run_time, $call_back, $param_arr){
+        while(1){
+            if(time()>=$run_time){
+                call_user_func_array($call_back, $param_arr);
+                return;
+            }
+            sleep(1);
+        }
+    } 
+ */
+function api($name,$vars=array()){
+    $array     = explode('/',$name);
+    $method    = array_pop($array);
+    $classname = array_pop($array);
+    $module    = $array? array_pop($array) : 'Common';
+    $callback  = $module.'\\Api\\'.$classname.'Api::'.$method;
+    if(is_string($vars)) {
+        parse_str($vars,$vars);
+    }
+    return call_user_func_array($callback,$vars);
+}
+
+/**
+ * 根据条件字段获取指定表的数据
+ * @param mixed $value 条件，可用常量或者数组
+ * @param string $condition 条件字段
+ * @param string $field 需要返回的字段，不传则返回整个数据
+ * @param string $table 需要查询的表
+ * @author huajie <banhuajie@163.com>
+ */
+function get_table_field($value = null, $condition = 'id', $field = null, $table = null){
+    if(empty($value) || empty($table)){
+        return false;
+    }
+
+    //拼接参数
+    $map[$condition] = $value;
+    $info = M(ucfirst($table))->where($map);
+    if(empty($field)){
+        $info = $info->field(true)->find();
+    }else{
+        $info = $info->getField($field);
+    }
+    return $info;
+}
+
+/**
+ * 获取数据的所有子孙数据的id值
+ * @author 朱亚杰 <xcoolcc@gmail.com>
+ */
+
+function get_stemma($pids,Model &$model, $field='id'){
+    $collection = array();
+
+    //非空判断
+    if(empty($pids)){
+        return $collection;
+    }
+
+    if( is_array($pids) ){
+        $pids = trim(implode(',',$pids),',');
+    }
+    $result     = $model->field($field)->where(array('pid'=>array('IN',(string)$pids)))->select();
+    $child_ids  = array_column ((array)$result,'id');
+
+    while( !empty($child_ids) ){
+        $collection = array_merge($collection,$result);
+        $result     = $model->field($field)->where( array( 'pid'=>array( 'IN', $child_ids ) ) )->select();
+        $child_ids  = array_column((array)$result,'id');
+    }
+    return $collection;
 }
