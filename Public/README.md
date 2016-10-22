@@ -7,3 +7,5 @@ bootstrap-3.3.0-dist.zip  	http://www.bootcss.com/
 
 Admin/js/AngularJS
 AngularJS 1.3.0-beta.14
+
+去掉了AngularJS所有相关文件
