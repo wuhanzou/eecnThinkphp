@@ -1,0 +1,81 @@
+<extend name="Public/base"/>
+<block name="style">
+<style type="text/css">
+	.content>.main{
+		min-height: 400px;
+	}
+</style>
+</blcok>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>用户管理</h3>
+				<ul>
+					<li><a href="{:U('User/index')}">用户信息</a></li>
+					<li><a href="{:U('User/authority')}" class="active">权限管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>个人中心</h3>
+				<ul style="display: none;">
+					<li><a href="{:U('User/mydocument')}">我的文档</a></li>
+					<li><a href="{:U('User/review')}">待审核</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>权限管理</h2>
+	</div>
+	<div class="btn-and-seach clearfix">
+		<div class="btn-box fl">
+			<a href="" class="btn">
+				新增
+			</a>
+			<a href="" class="btn">
+				启用
+			</a>
+			<a href="" class="btn">
+				禁用
+			</a>
+			<a href="" class="btn">
+				删除
+			</a>
+		</div>		
+	</div>
+	<div class="data-table col1">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="check-all" /></th>
+					<th>用户组</th>
+					<th>描述</th>
+					<th>授权</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>默认用户组</td>
+					<td>admin</td>
+					<td><a href="">访问授权</a> <a href="">分类授权</a> <a href="">成员授权</a> </td>
+					<td>正常</td>
+					<td><a href="">详情</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>测试用户组</td>
+					<td>测试用户</td>
+					<td><a href="">访问授权</a> <a href="">分类授权</a> <a href="">成员授权</a> </td>
+					<td>正常</td>
+					<td><a href="">详情</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</block>

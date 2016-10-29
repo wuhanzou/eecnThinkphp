@@ -4,36 +4,46 @@
     <meta charset="UTF-8">
     <title>后台管理平台</title>
     <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap-theme.min.css">
-    <script type="text/javascript" src="__STATIC__/jquery-3.1.1.slim.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
+    <!--<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap-theme.min.css">-->   
+    <!--<link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">-->
     <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+     <script type="text/javascript" src="__STATIC__/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/base.js"></script>
     <!-- 页面自定义单独样式 -->
     <block name="style"></block>
 </head>
 <body>
+	
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo"></span>
+        <div class="logo"></div>
         <!-- /Logo -->
 
         <!-- 主导航 -->
-        <ul class="main-nav">
-            <li class=""><a href="{$menu.url|U}">123</a></li>
-        </ul>
+        <div class="nav">
+				<ul>
+					<li><a href="{:U('Index/index')}" name="Index">首页</a></li>
+					<li><a href="{:U('Content/index')}" name="Content">内容</a></li>
+					<li><a href="{:U('User/index')}" name="User">用户</a></li>
+					<li><a href="{:U('System/index')}" name="System">系统</a></li>
+				</ul>
+		</div>
         <!-- /主导航 -->
 
         <!-- 用户栏 -->
-        <div class="user-bar">
-            <a href="javascript:;" class="user-entrance"><i class="icon-user"></i></a>
-            <ul class="nav-list user-menu hidden">
-                <li class="manager">你好，<em title="{:session('user_auth.username')}">{:session('user_auth.username')}</em></li>
-                <li><a href="{:U('User/updatePassword')}">修改密码</a></li>
-                <li><a href="{:U('User/updateNickname')}">修改昵称</a></li>
-                <li><a href="{:U('Public/logout')}">退出</a></li>
-            </ul>
-        </div>
+        <div class="user fr">
+			<a href="javascript:;" class="user-enterance"></a>
+			<ul class="user-menu d-none">
+				<li>
+					你好
+					<em title="admin">admin</em>
+				</li>
+				<li><a href="">修改昵称</a></li>
+				<li><a href="">修改密码</a></li>
+				<li><a href="">退出登录</a></li>
+			</ul>
+		</div>
     </div>
     <!-- /头部 -->
 
@@ -47,13 +57,9 @@
     <!-- 内容区 -->
     <div class="content">
         <div class="main">
-            <block name="nav">
-            <!-- 标题 -->
-            <!-- /标题 -->
-            </block>
             <block name="body"></block>
         </div>
-        <div class="cont-ft">
+        <div class="cont-ft clearfix">
             <div class="copyright">
                 <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">优优美家后台</a>管理平台</div>
                 <div class="fr">鄂ICP备16014083号-1</div>
@@ -62,6 +68,8 @@
     </div>
     <!-- /内容区 -->
     <!-- 页面自定义JS -->
+   
     <block name="script"></block>
+    
 </body>
 </html>

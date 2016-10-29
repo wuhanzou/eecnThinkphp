@@ -1,0 +1,105 @@
+<extend name="Public/base"/>
+<style type="text/css">
+	.content>.main{
+		min-height: 400px;
+	}
+</style>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>博客</h3>
+				<ul>
+					<li><a href="" class="active">默认分类</a></li>
+					<li><a href="{:U('Content/login')}">内容二</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>文档列表(1) [<a href="">博客</a> > <a href="">默认分类</a>] </h2>
+	</div>
+	<div class="btn-and-seach clearfix">
+		<div class="btn-box fl">
+			<a href="" class="btn">
+				新增
+			</a>
+			<a href="" class="btn">
+				启用
+			</a>
+			<a href="" class="btn">
+				禁用
+			</a>
+			<a href="" class="btn">
+				移动
+			</a>
+			<a href="" class="btn">
+				复制
+			</a>
+			<a href="" class="btn">
+				粘贴
+			</a>
+			<a href="" class="btn">
+				删除
+			</a>
+			<a href="" class="btn">
+				排序
+			</a>
+		</div>
+		<div class="search-box fr">
+			<div class="search-group fr">	
+				<input type="text" id="" value="" placeholder="请输入标题文档" class="user-search"/>
+				<a href=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="data-table col1">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="check-all" /></th>
+					<th>编号</th>
+					<th>标题</th>
+					<th>子文档</th>
+					<th>类型</th>
+					<th>分类</th>
+					<th>优先级</th>
+					<th>最后更新</th>
+					<th>浏览</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>2</td>
+					<td>123</td>
+					<td>0</td>
+					<td>主题</td>
+					<td>默认分类</td>
+					<td>0</td>
+					<td>2016-10-27</td>
+					<td>0</td>
+					<td>正常</td>
+					<td><a href="">编辑</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>3</td>
+					<td>456</td>
+					<td>0</td>
+					<td>主题</td>
+					<td>默认分类</td>
+					<td>0</td>
+					<td>2016-10-27</td>
+					<td>0</td>
+					<td>正常</td>
+					<td><a href="">编辑</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</block>

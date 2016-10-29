@@ -1,0 +1,105 @@
+<extend name="Public/base"/>
+<style type="text/css">
+	.content>.main{
+		min-height: 400px;
+	}
+</style>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>用户管理</h3>
+				<ul>
+					<li><a href="{:U('User/index')}" class="active">用户信息</a></li>
+					<li><a href="{:U('User/authority')}">权限管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>个人中心</h3>
+				<ul style="display: none;">
+					<li><a href="{:U('User/mydocument')}">我的文档</a></li>
+					<li><a href="{:U('User/review')}">待审核</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>用户列表</h2>
+	</div>
+	<div class="btn-and-seach clearfix">
+		<div class="btn-box fl">
+			<a href="" class="btn">
+				新增
+			</a>
+			<a href="" class="btn">
+				启用
+			</a>
+			<a href="" class="btn">
+				禁用
+			</a>
+			<a href="" class="btn">
+				删除
+			</a>
+		</div>
+		<div class="search-box fr">
+			<div class="search-group fr">	
+				<input type="text" id="" value="" placeholder="请输入用户昵称或ID" class="user-search"/>
+				<a href=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="data-table col1">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="check-all" /></th>
+					<th>UID</th>
+					<th>昵称</th>
+					<th>积分</th>
+					<th>登录次数</th>
+					<th>最后登录时间</th>
+					<th>最后登录IP</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>1</td>
+					<td>admin</td>
+					<td>60</td>
+					<td>13</td>
+					<td>2016-10-25 09:10</td>
+					<td>127.0.0.1</td>
+					<td>正常</td>
+					<td><a href="">详情</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>1</td>
+					<td>admin</td>
+					<td>60</td>
+					<td>13</td>
+					<td>2016-10-25 09:10</td>
+					<td>127.0.0.1</td>
+					<td>正常</td>
+					<td><a href="">详情</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>1</td>
+					<td>admin</td>
+					<td>60</td>
+					<td>13</td>
+					<td>2016-10-25 09:10</td>
+					<td>127.0.0.1</td>
+					<td>正常</td>
+					<td><a href="">详情</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</block>
