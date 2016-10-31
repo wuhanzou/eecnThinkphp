@@ -46,6 +46,23 @@ h1,h2,h3,h4,h5,h6{
 	display: block;
 	clear: both;
 }
+.for-read div{
+	height: 30px;
+	font-size: 16px;
+}
+.for-read dt{
+	float: left;
+	line-height: 28px;
+}
+.for-read dd{
+	float: left;
+	line-height: 28px;
+	margin: 0 20px;
+}
+.for-read dd a{
+	margin-left: 15px;
+	font-size: 14px;
+}
 
 /*头部开始*/
 .header{
@@ -283,11 +300,15 @@ a:hover{
 	border: 1px solid #ececec;
 	border-radius: 3px;
 }
+.login-wrap form .focus{
+	box-shadow: 0 0 12px #BAF7FF;
+	border-color: #BAF7FF;
+}
 .login-wrap form .input-group i{
 	float: left;
 	width: 24px;
 	height: 24px;
-	margin-top: 3px;
+	margin-top: 8px;
 	margin-right: 8px;
 	background-image: url(../images/login.png);
 	background-repeat: no-repeat;
@@ -300,8 +321,8 @@ i.i-yanzhengma{
 }
 .login-wrap form .input-group input{
 	width: 220px;
-	height: 30px;
-	padding: 4px 0;
+	height: 38px;
+	padding: 8px 0;
 	float: left;
 	border: none;
 	outline: none;
@@ -316,22 +337,26 @@ i.i-yanzhengma{
 	text-decoration: underline;
 	cursor: pointer;
 }
-.yanzheng-img{
+.yanzheng-img img{
 	width: 100%;
-	height: 40px;
+	height: 50px;
 }
-.login-wrap form input[type=submit]{
-	width:100%;
-	height: 48px;
-	line-height: 48px;
-	font-size: 16px;
-	color: #fff;
-	margin-top: 15px;
-	background-color: #40C402;
+.login-btn{
+	width: 100%;
+	height: 50px;
 	border: none;
+	margin-top: 20px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 20px;
+	background-color: #40C402;
+	
 }
-.login-wrap form input[type=submit]:hover{
+.login-btn:hover{
 	background-color: #42EC00;
+}
+.login-btn .in{
+	display: none;
 }
 /*登录页面样式结束*/
 
@@ -448,24 +473,24 @@ i.i-yanzhengma{
 	border-top-width: 2px;
 	border-color: #34b4e0 #e0e0e0 #f6f6f6;
 }
-.tab-content h3{
+.h-and-input h3{
 	font-size: 16px;
 	font-weight: 700;
 }
-.tab-content h3 span{
+.h-and-input h3 span{
 	color: #aaa;
 	font-size: 14px;
 	margin-left: 8px;
 	font-weight: 500;
 }
-.tab-content input{
+.h-and-input input{
 	line-height: 30px;
 	background-color: #fff;
 	width: 400px;
 	padding-left: 5px;
 	border:1px solid #eee;
 }
-.tab-content textarea{
+.h-and-input textarea{
 	width: 400px;
 	height: 110px;
 	padding: 5px;

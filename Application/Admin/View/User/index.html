@@ -1,0 +1,43 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>用户管理</h3>
+				<ul>
+					<li><a href="{:U('User/lists')}" class="active">用户信息</a></li>
+					<li><a href="{:U('User/authority')}">权限管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>个人中心</h3>
+				<ul style="display: none;">
+					<li><a href="{:U('User/mydocument')}">我的文档</a></li>
+					<li><a href="{:U('User/review')}">待审核</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>用户详情</h2>
+	</div>
+	<div class="for-read">
+		<img src="htt://www.eecnThinkphp/index.php?/Public/images/user-pic.png"/>
+		<dl>
+			<div class="clearfix">
+				<dt>用户名:</dt>
+				<dd>admin <a href="{:U('User/nickname')}">修改</a></dd>
+			</div>
+			<div class="clearfix">
+				<dt>邮箱:</dt>
+				<dd>123456789@163.com <a href="">修改</a></dd>
+			</div>
+			<div class="clearfix">
+				<dt>绑定手机:</dt>
+				<dd>138****7896 <a href="">修改</a></dd>
+			</div>
+		</dl>
+	</div>
+</block>

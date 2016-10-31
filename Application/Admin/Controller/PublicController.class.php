@@ -13,4 +13,12 @@ class PublicController extends Controller {
     public function login($username = null, $password = null, $verify = null){
         $this->display();
     }
+     /**
+     * 验证码
+     * @return [type] [description]
+     */
+    public function verify(){
+        $verify = new \Think\Verify();
+        $verify->entry(1);
+    }
 }
