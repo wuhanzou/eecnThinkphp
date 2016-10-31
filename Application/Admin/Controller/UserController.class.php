@@ -10,6 +10,13 @@ class UserController extends Controller {
         $this->display();
     }
     /**
+     * 我的文档
+     * @author huajie <banhuajie@163.com>
+     */
+    public function mydocument($status = null, $title = null){
+        $this->display();
+    }
+    /**
      * 用户管理首页
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */

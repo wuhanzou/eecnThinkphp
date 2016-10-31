@@ -196,7 +196,7 @@ h1,h2,h3,h4,h5,h6{
 }
 /*右侧边栏结束*/
 
-/*content样式开始*/
+/*Article样式开始*/
 .content{
 	background-color: #f6f6f6;
 }
@@ -274,7 +274,7 @@ a:hover{
 .data-table a:hover{
 	text-decoration: underline;
 }
-/*content样式结束*/
+/*Article样式结束*/
 
 /*登录页面样式开始*/
 .login-wrap{
