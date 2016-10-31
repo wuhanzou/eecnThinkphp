@@ -306,7 +306,7 @@ i.i-yanzhengma{
 	border: none;
 	outline: none;
 }
-.login-wrap form .input-group input[name=yanzhengma]{
+.login-wrap form .input-group input[name=verify]{
 	width: 160px;
 }
 .change-yanzhengma{

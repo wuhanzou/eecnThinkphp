@@ -4,30 +4,23 @@
     <meta charset="UTF-8">
     <title>后台管理平台</title>
     <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap-theme.min.css">-->   
-    <!--<link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">-->
     <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
-     <script type="text/javascript" src="__STATIC__/jquery-3.1.0.min.js"></script>
-    <script type="text/javascript" src="__STATIC__/base.js"></script>
     <!-- 页面自定义单独样式 -->
-    <block name="style"></block>
-</head>
-<block name="style">
-	<style type="text/css">
+    <style type="text/css">
 		body{
 			padding: 0;
 			padding-top: 100px;
 			background-color: #30333F;
 		}
 	</style>
-</block>
+</head>
 <block name="body">
 	<div class="login-wrap">
-		<form action="" method="post">
-			<h3><span class="login-logo"></span>优美家管理平台</h3>
+		<form action="{:U('login')}" method="post" class="login-form">
+			<h3><span class="login-logo"></span>优优美家管理平台</h3>
 			<div class="input-group">
 				<i class="i-username"></i>
-				<input type="text" placeholder="请填写用户名" name="ueername" />
+				<input type="text" placeholder="请填写用户名" name="username" />
 			</div>
 			<div class="input-group">
 				<i class="i-password"></i>
@@ -35,11 +28,11 @@
 			</div>
 			<div class="input-group">
 				<i class="i-yanzhengma"></i>
-				<input type="text" placeholder="请填写验证码" name="yanzhengma"/>
-				<a class="change-yanzhengma">换一张?</a>
+				<input type="text" placeholder="请填写验证码" name="verify"/>
+				<a class="change-yanzhengma" title="换一张" href="javascript:void(0)">换一张？</a>
 			</div>
 			<div class="yanzheng-img">
-				<img src=""/>
+				<img class="verifyimg reloadverify" alt="点击切换" src="{:U('Public/verify')}">
 			</div>
 			<input type="submit" value="登 录"  />
 		</form>

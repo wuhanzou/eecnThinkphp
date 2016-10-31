@@ -53,11 +53,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 
 -- -----------------------------
--- Table structure for `onethink_ucenter_member`
+-- Table structure for `eecn_member`
 -- 注意这里是用户表,后台的管理帐号。和会员表的字段是有区别的(暂时没有考虑做会员页面)
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_ucenter_member`;
-CREATE TABLE `onethink_ucenter_member` (
+DROP TABLE IF EXISTS `eecn_member`;
+CREATE TABLE `eecn_member` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `username` char(16) NOT NULL COMMENT '用户名',
   `password` char(32) NOT NULL COMMENT '密码',
@@ -73,12 +73,16 @@ CREATE TABLE `onethink_ucenter_member` (
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户表';
-
+--
+-- 默认用户名:admin,密码:admin
+--
+INSERT INTO `eecn_member` (`id`, `username`, `password`, `email`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
+(1, 'admin', '0ed89fa24e3fb387b17cff71bb4ca002', 'admin@163.com', 1476519385, 2130706433, 1477894159, 2130706433, 1476519385, 1);
 -- -----------------------------
 -- Table structure for `onethink_menu`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_menu`;
-CREATE TABLE `onethink_menu` (
+DROP TABLE IF EXISTS `eecn_menu`;
+CREATE TABLE `eecn_menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
   `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
@@ -95,10 +99,10 @@ CREATE TABLE `onethink_menu` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='菜单管理(后台顶级导航)';
 
 -- -----------------------------
--- Table structure for `onethink_channel`
+-- Table structure for `eecn_channel`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_channel`;
-CREATE TABLE `onethink_channel` (
+DROP TABLE IF EXISTS `eecn_channel`;
+CREATE TABLE `eecn_channel` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级频道ID',
   `title` char(30) NOT NULL COMMENT '频道标题',
@@ -113,10 +117,10 @@ CREATE TABLE `onethink_channel` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='导航菜单(前台顶级导航)';
 
 -- -----------------------------
--- Table structure for `onethink_config`
+-- Table structure for `eecn_config`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_config`;
-CREATE TABLE `onethink_config` (
+DROP TABLE IF EXISTS `eecn_config`;
+CREATE TABLE `eecn_config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',
   `name` varchar(30) NOT NULL DEFAULT '' COMMENT '配置名称',
   `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '配置类型',
@@ -136,10 +140,10 @@ CREATE TABLE `onethink_config` (
 ) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='网站设置';
 
 -- -----------------------------
--- Table structure for `onethink_model`
+-- Table structure for `eecn_model`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_model`;
-CREATE TABLE `onethink_model` (
+DROP TABLE IF EXISTS `eecn_model`;
+CREATE TABLE `eecn_model` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '模型ID',
   `name` char(30) NOT NULL DEFAULT '' COMMENT '模型标识',
   `title` char(30) NOT NULL DEFAULT '' COMMENT '模型名称',
@@ -165,10 +169,10 @@ CREATE TABLE `onethink_model` (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='文档模型表';
 
 -- -----------------------------
--- Table structure for `onethink_attribute`
+-- Table structure for `eecn_attribute`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_attribute`;
-CREATE TABLE `onethink_attribute` (
+DROP TABLE IF EXISTS `eecn_attribute`;
+CREATE TABLE `eecn_attribute` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL DEFAULT '' COMMENT '字段名',
   `title` varchar(100) NOT NULL DEFAULT '' COMMENT '字段注释',
@@ -195,10 +199,10 @@ CREATE TABLE `onethink_attribute` (
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='文档模型属性表';
 
 -- -----------------------------
--- Table structure for `onethink_category`
+-- Table structure for `eecn_category`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_category`;
-CREATE TABLE `onethink_category` (
+DROP TABLE IF EXISTS `eecn_category`;
+CREATE TABLE `eecn_category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',
   `name` varchar(30) NOT NULL COMMENT '标志',
   `title` varchar(50) NOT NULL COMMENT '标题',
@@ -233,10 +237,10 @@ CREATE TABLE `onethink_category` (
 ) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='文章分类表';
 
 -- -----------------------------
--- Table structure for `onethink_document`
+-- Table structure for `eecn_document`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_document`;
-CREATE TABLE `onethink_document` (
+DROP TABLE IF EXISTS `eecn_document`;
+CREATE TABLE `eecn_document` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
   `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
   `name` char(40) NOT NULL DEFAULT '' COMMENT '标识',
@@ -267,10 +271,10 @@ CREATE TABLE `onethink_document` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表(放置文章常用属性,文档基础数据)';
 
 -- -----------------------------
--- Table structure for `onethink_document_article`
+-- Table structure for `eecn_article`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_document_article`;
-CREATE TABLE `onethink_document_article` (
+DROP TABLE IF EXISTS `eecn_article`;
+CREATE TABLE `eecn_article` (
   `id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文档ID',
   `parse` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容解析类型',
   `content` text NOT NULL COMMENT '文章内容',
