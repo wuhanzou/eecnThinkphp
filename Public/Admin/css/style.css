@@ -178,7 +178,8 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #f6f6f6;
 }
 /*右侧边栏结束*/
-/*内容样式开始*/
+
+/*content样式开始*/
 .content{
 	background-color: #f6f6f6;
 }
@@ -256,7 +257,8 @@ a:hover{
 .data-table a:hover{
 	text-decoration: underline;
 }
-/*内容样式结束*/
+/*content样式结束*/
+
 /*登录页面样式开始*/
 .login-wrap{
 	width: 1000px;
@@ -307,7 +309,7 @@ i.i-yanzhengma{
 .login-wrap form .input-group input[name=yanzhengma]{
 	width: 160px;
 }
-.change-one{
+.change-yanzhengma{
 	float: left;
 	margin-top: 5px;
 	color: #69C3FF;
@@ -367,7 +369,6 @@ i.i-yanzhengma{
 	display: inline-block;
 	width: 48px;
 	height: 48px;
-	
 	background-image: url(../images/count_icon.png);
 	background-repeat: no-repeat;
 	
@@ -411,7 +412,6 @@ i.i-yanzhengma{
 	border-collapse:collapse;
 	color: #404040;
 }
-
 .index-content table th{
 	width: 30%;
 	padding: 10px 0 10px 6px;
@@ -428,6 +428,66 @@ i.i-yanzhengma{
 }
 
 /*首页内容样式结束*/
+
+/*系统页面标签切换样式开始*/
+.tab-btn-box{
+	border-bottom: 1px solid #e0e0e0;
+}
+.tab-btn-box a{
+	display: inline-block;
+	width:106px;
+	height: 38px;
+	padding: 0 20px;
+	font-size: 16px;
+	line-height: 36px;
+	margin-bottom: -2px;
+	border: 1px solid transparent;
+	font-weight: 700;
+}
+.tab-btn-box a.active{
+	border-top-width: 2px;
+	border-color: #34b4e0 #e0e0e0 #f6f6f6;
+}
+.tab-content h3{
+	font-size: 16px;
+	font-weight: 700;
+}
+.tab-content h3 span{
+	color: #aaa;
+	font-size: 14px;
+	margin-left: 8px;
+	font-weight: 500;
+}
+.tab-content input{
+	line-height: 30px;
+	background-color: #fff;
+	width: 400px;
+	padding-left: 5px;
+	border:1px solid #eee;
+}
+.tab-content textarea{
+	width: 400px;
+	height: 110px;
+	padding: 5px;
+}
+.confirm-box{
+	margin-top: 30px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+.confirm-box button[type=submit]{
+	background-color: #CC3900;
+}
+.confirm-box button[type=submit]:hover{
+	background-color: #ff2610;
+}
+.confirm-box button[type=button]{
+	background-color: #4bbd00;
+}
+.confirm-box button[type=button]:hover{
+	background-color: #4cdb00;
+}
+/*系统页面标签切换样式结束*/
 
 /*尾部样式开始*/
 .cont-ft{
