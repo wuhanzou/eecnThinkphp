@@ -5,6 +5,7 @@
     <title>后台管理平台</title>
     <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+    <script type="text/javascript" src="__STATIC__/jquery-3.1.0.min.js"></script>
     <!-- 页面自定义单独样式 -->
     <style type="text/css">
 		body{
@@ -14,7 +15,7 @@
 		}
 	</style>
 </head>
-<block name="body">
+
 	<div class="login-wrap">
 		<form action="{:U('login')}" method="post" class="login-form" autocomplete="off">
 			<h3><span class="login-logo"></span>优优美家管理平台</h3>
@@ -41,39 +42,45 @@
                 </button>
                 <div class="check-tips"></div>
                 </div>
-		</form>
+	</form>
 	</div>
 	<script type="text/javascript">
-    	//表单提交
-    	$(document)
-	    	.ajaxStart(function(){
-	    		$("button:submit").addClass("log-in").attr("disabled", true);
-	    	})
-	    	.ajaxStop(function(){
-	    		$("button:submit").removeClass("log-in").attr("disabled", false);
-	    	});
+        /* 登陆表单获取焦点变色 */
+        $(".login-form").on("focus", ".input-group", function(e){
+            $(e.currentTarget).addClass('focus');
+        }).on("blur",".input-group",function(e){
+            $(e.currentTarget).removeClass('focus');
+        });
+        //表单提交
+        $(document)
+            .ajaxStart(function(){
+                // ajax提交发生时
+                $("button:submit").addClass("log-in").attr("disabled", true);
+            })
+            .ajaxStop(function(){
+                // 提交完成后
+                $("button:submit").removeClass("log-in").attr("disabled", false);
+            });
 
-    	$("form").submit(function(){
-    		var self = $(this);
-    		$.post(self.attr("action"), self.serialize(), success, "json");
-    		return false;
-
-    		function success(data){
-    			if(data.status){
-    				window.location.href = data.url;
-    			} else {
-    				self.find(".check-tips").text(data.info);
-    				//刷新验证码
-    				$(".reloadverify").click();
-    			}
-    		}
-    	});
-
-		$(function(){
-			//初始化选中用户名输入框
-			$(".login-form").find("input[name=username]").focus();
-			//刷新验证码
-			var verifyimg = $(".verifyimg").attr("src");
+        $("form").submit(function(){
+            var self = $(this);
+            $.post(self.attr("action"), self.serialize(), success, "json");
+            return false;
+            function success(data){
+                if(data.status){
+                    window.location.href = data.url;
+                } else {
+                    self.find(".check-tips").text(data.info);
+                    //刷新验证码
+                    $(".reloadverify").click();
+                }
+            }
+        });
+        $(function(){
+            //初始化选中用户名输入框
+            $(".login-wrap").find("input[name=username]").focus();
+            //刷新验证码
+            var verifyimg = $(".verifyimg").attr("src");
             $(".reloadverify").click(function(){
                 if( verifyimg.indexOf('?')>0){
                     $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
@@ -81,33 +88,5 @@
                     $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
                 }
             });
-
-            //placeholder兼容性
-                //如果支持 
-            function isPlaceholer(){
-                var input = document.createElement('input');
-                return "placeholder" in input;
-            }
-                //如果不支持
-            if(!isPlaceholer()){
-                $(".placeholder_copy").css({
-                    display:'block'
-                })
-                $("#itemBox input").keydown(function(){
-                    $(this).parents(".item").next(".placeholder_copy").css({
-                        display:'none'
-                    })                    
-                })
-                $("#itemBox input").blur(function(){
-                    if($(this).val()==""){
-                        $(this).parents(".item").next(".placeholder_copy").css({
-                            display:'block'
-                        })                      
-                    }
-                })
-                
-                
-            }
-		});
+        });
     </script>
-</block>
