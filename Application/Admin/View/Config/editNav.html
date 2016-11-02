@@ -1,0 +1,49 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>系统设置</h3>
+				<ul>
+					<li><a href="{:U('Config/index')}">网站设置</a></li>
+					<li><a href="">分类管理</a></li>
+					<li><a href="{:U('Config/model')}">模型管理</a></li>
+					<li><a href="">配置管理</a></li>
+					<li><a href="{:U('Config/menu')}">菜单管理</a></li>
+					<li><a href="{:U('Config/nav')}" class="active">导航管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>数据备份</h3>
+				<ul style="display: none;">
+					<li><a href="">备份数据库</a></li>
+					<li><a href="">还原数据库</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>编辑导航</h2>
+	</div>
+	<div class="tab-content h-and-input">
+		<form action="" method="post">
+			<h3>导航标题<span>( 用于显示文字 )</span></h3>
+			<input type="text" value="原有标题" />
+			<h3>导航链接<span>( 用于调转的URL，支持带http://的URL或U函数参数格式 )</span></h3>
+			<input type="text" value="原有链接" />
+			<h3>新窗口打开<span>( 是否新窗口打开链接 )</span></h3>
+			<select name="">
+				<option value="" selected="selected">否</option>
+				<option value="">是</option>
+			</select>
+			<h3>优先级<span>( 导航显示顺序)</span></h3>
+			<input type="text" value="0" />
+			<div class="confirm-box">
+				<button type="submit" class="big-btn">确 定</button>
+				<button type="button" onclick="javascript:history.back(-1);return false;" class="big-btn">返 回</button>
+			</div>
+		</form>
+	</div>
+</block>

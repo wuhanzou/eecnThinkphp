@@ -1,0 +1,84 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>系统设置</h3>
+				<ul>
+					<li><a href="{:U('Config/index')}">网站设置</a></li>
+					<li><a href="">分类管理</a></li>
+					<li><a href="{:U('Config/model')}">模型管理</a></li>
+					<li><a href="">配置管理</a></li>
+					<li><a href="{:U('Config/menu')}">菜单管理</a></li>
+					<li><a href="{:U('Config/nav')}" class="active">导航管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>数据备份</h3>
+				<ul style="display: none;">
+					<li><a href="">备份数据库</a></li>
+					<li><a href="">还原数据库</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>导航管理</h2>
+	</div>
+	<div class="btn-and-seach clearfix">
+		<div class="btn-box fl">
+			<a href="{:U('Config/addNav')}" class="btn">
+				新增
+			</a>
+			<a href="" class="btn">
+				删除
+			</a>
+			<a href="" class="btn">
+				排序
+			</a>
+		</div>
+	</div>
+	<div class="data-table col1">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="check-all" /></th>
+					<th>ID</th>
+					<th>导航名称</th>
+					<th>导航地址</th>
+					<th>排序</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>1</td>
+					<td>首页</td>
+					<td>Index/index</td>
+					<td>1</td>
+					<td><a href="{:U('Config/editNav')}">编辑</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>2</td>
+					<td>博客</td>
+					<td>Article/index</td>
+					<td>2</td>
+					<td><a href="{:U('Config/editNav')}">编辑</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>3</td>
+					<td>官网</td>
+					<td>Article/index</td>
+					<td>3</td>
+					<td><a href="{:U('Config/editNav')}">编辑</a> <a href="">禁用</a> <a href="">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</block>

@@ -27,7 +27,14 @@ class UserController extends Controller {
      * 新增及添加新用户
      * @author huajie <banhuajie@163.com>
      */
-    public function add(){
+    public function addUser(){
+        $this->display();
+    }
+     /**
+     * 新增及添加新用户组
+     * @author huajie <banhuajie@163.com>
+     */
+    public function addUgroup(){
         $this->display();
     }
     /**

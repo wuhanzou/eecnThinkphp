@@ -20,14 +20,14 @@ class ArticleController extends Controller {
      * 文档新增页面初始化
      * @author huajie <banhuajie@163.com>
      */
-    public function add(){
+    public function addArticle(){
        $this->display();
     }
         /**
      * 文档编辑页面初始化
      * @author huajie <banhuajie@163.com>
      */
-    public function edit(){
+    public function editArticle(){
         $this->display();	
     }
 

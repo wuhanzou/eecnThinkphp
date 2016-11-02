@@ -1,0 +1,74 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>系统设置</h3>
+				<ul>
+					<li><a href="{:U('Config/index')}" class="active">网站设置</a></li>
+					<li><a href="">分类管理</a></li>
+					<li><a href="{:U('Config/model')}">模型管理</a></li>
+					<li><a href="">配置管理</a></li>
+					<li><a href="{:U('Config/menu')}">菜单管理</a></li>
+					<li><a href="{:U('Config/nav')}">导航管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>数据备份</h3>
+				<ul style="display: none;">
+					<li><a href="">备份数据库</a></li>
+					<li><a href="">还原数据库</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>网站设置</h2>
+	</div>
+	<div class="btn-and-seach clearfix">
+		<div class="tab-btn-box">
+			<a href="{:U('Config/index')}">
+				基本配置
+			</a>
+			<a href="{:U('Config/2')}" class="active">
+				内容配置
+			</a>
+			<a href="{:U('Config/3')}">
+				用户配置
+			</a>
+			<a href="{:U('Config/4')}">
+				系统配置
+			</a>
+		</div>
+	</div>
+	<div class="tab-content h-and-input">
+		<form action="" method="post">
+			<h3>回复列表每页条数<span>( )</span></h3>
+			<input type="text" value="10" name=""/>
+			<h3>是否开启草稿功能<span>( 新增文章时的草稿功能配置 )</span></h3>
+			<select name="">
+				<option value="">开启草稿功能</option>
+				<option value="">关闭草稿功能</option>
+			</select>
+			<h3>自动保存草稿时间<span>( 自动保存草稿的时间间隔，单位：秒 )</span></h3>
+			<input type="text" value="60" />
+			<h3>文档推荐位<span>( 文档推荐位，推荐到多个位置KEY值相加即可 )</span></h3>
+			<textarea name="" rows="" cols="">1:列表页推荐
+2:频道页推荐
+4:网站首页推荐</textarea>
+			<h3>文档可见性<span>( 文章可见性仅影响前台显示，后台不收影响 )</span></h3>
+			<textarea name="" rows="" cols="">0:所有人可见
+1:仅注册会员可见
+2:仅管理员可见</textarea>
+			<h3>后台每页记录数<span>( 后台数据每页显示记录数 )</span></h3>
+			<input type="text" value="10" name=""/>
+			<div class="confirm-box">
+				<button type="submit" class="big-btn">确 定</button>
+				<button type="button" onclick="javascript:history.back(-1);return false;" class="big-btn">返 回</button>
+			</div>
+		</form>
+	</div>
+	
+</block>

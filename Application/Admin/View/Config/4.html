@@ -1,0 +1,104 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>系统设置</h3>
+				<ul>
+					<li><a href="{:U('Config/index')}" class="active">网站设置</a></li>
+					<li><a href="">分类管理</a></li>
+					<li><a href="{:U('Config/model')}">模型管理</a></li>
+					<li><a href="">配置管理</a></li>
+					<li><a href="{:U('Config/menu')}">菜单管理</a></li>
+					<li><a href="{:U('Config/nav')}">导航管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>数据备份</h3>
+				<ul style="display: none;">
+					<li><a href="">备份数据库</a></li>
+					<li><a href="">还原数据库</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>网站设置</h2>
+	</div>
+	<div class="btn-and-seach clearfix">
+		<div class="tab-btn-box">
+			<a href="{:U('Config/index')}" >
+				基本配置
+			</a>
+			<a href="{:U('Config/2')}">
+				内容配置
+			</a>
+			<a href="{:U('Config/3')}">
+				用户配置
+			</a>
+			<a href="{:U('Config/4')}" class="active">
+				系统配置
+			</a>
+		</div>
+	</div>
+	<div class="tab-content h-and-input">
+		<form action="" method="post">
+			<h3>是否显示页面Trace<span>( 是否显示页面Trace信息 )</span></h3>
+			<select name="">
+				<option value="">关闭</option>
+				<option value="">开启</option>
+			</select>
+			<h3>配置类型列表<span>( 主要用于数据解析和页面表单的生成 )</span></h3>
+			<textarea name="" rows="" cols="">0:数字
+1:字符
+2:文本
+3:数组
+4:枚举</textarea>
+			<h3>预览插件的CodeMirror主题<span>( 详情见CodeMirror官网 )</span></h3>
+			<select name="">
+				<option value="">ambiance</option>
+				<option value="">3024 day</option>
+				<option value="">3024 night</option>
+			</select>
+			<h3>配置分组<span>( 配置分组 )</span></h3>
+			<textarea name="" rows="" cols="">1:基本
+2:内容
+3:用户
+4:系统</textarea>
+			<h3>数据库备份根路径<span>( 路径必须以 / 结尾 )</span></h3>
+			<input type="text" value="./Data/" />
+			<h3>钩子的类型<span>( 类型 1-用于扩展显示内容，2-用于扩展业务处理 )</span></h3>
+			<textarea name="" rows="" cols="">AUTH_ON:1
+AUTH_TYPE:2</textarea>
+			<h3>数据库备份文件是否启用压缩<span>( 压缩备份文件需要PHP环境支持gzopen,gzwrite函数 )</span></h3>
+			<select name="">
+				<option value="">不压缩</option>
+				<option value="" selected="selected">启用压缩</option>
+			</select>
+			<h3>数据库备份文件压缩级别<span>( 数据库备份文件的压缩级别，该配置在开启压缩时生效 )</span></h3>
+			<select name="">
+				<option value="">普通</option>
+				<option value="">一般</option>
+				<option value="" selected="selected">最高</option>
+			</select>
+			<h3>开启开发者模式<span>( 是否开启开发者模式 )</span></h3>
+			<select name="">
+				<option value="">关闭</option>
+				<option value="" selected="selected">开启</option>
+			</select>
+			<h3>后台允许访问IP<span>( 多个用逗号分隔，如果不配置表示不限制IP访问 )</span></h3>
+			<textarea name="" rows="" cols=""></textarea>
+			<div class="confirm-box">
+				<button type="submit" class="big-btn">确 定</button>
+				<button type="button" onclick="javascript:history.back(-1);return false;" class="big-btn">返 回</button>
+			</div>
+			
+			
+			
+		<!--<input type="submit" value=""/>-->
+		</form>
+	</div>
+	
+</block>

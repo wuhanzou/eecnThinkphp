@@ -1,0 +1,38 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>用户管理</h3>
+				<ul>
+					<li><a href="{:U('User/lists')}">用户信息</a></li>
+					<li><a href="{:U('User/authority')}"  class="active">权限管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>个人中心</h3>
+				<ul style="display: none;">
+					<li><a href="{:U('User/mydocument')}">我的文档</a></li>
+					<li><a href="{:U('User/review')}">待审核</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>新增用户组</h2>
+	</div>
+	<div class="h-and-input">
+		<form action="" method="post">
+			<h3>用户组<span></span></h3>
+			<input type="text" value="" />
+			<h3>描述<span></span></h3>
+			<textarea name="" rows="" cols=""></textarea>
+			<div class="confirm-box">
+				<button type="submit" class="big-btn">确 定</button>
+				<button type="button" onclick="javascript:history.back(-1);return false;" class="big-btn">返 回</button>
+			</div>
+		</form>
+	</div>
+</block>
