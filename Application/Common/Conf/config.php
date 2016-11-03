@@ -23,5 +23,5 @@ return array(
     'DB_PREFIX' => 'eecn_', // 数据库表前缀
     'DB_CHARSET'=> 'utf8', // 字符集
     // 显示页面Trace信息
-	'SHOW_PAGE_TRACE' =>true, 
+    'SHOW_PAGE_TRACE' =>true, 
 );

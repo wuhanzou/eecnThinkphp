@@ -1,6 +1,5 @@
 <?php
-define('UC_AUTH_KEY', 'T;:KJ=?/"fOW&R|%P)qF<]ybE[CuVo^7L_G,z(dS'); //加密KEY,用户密码用
-return array(
-	//'配置项'=>'配置值'
-
-);
+/**
+ * 注意：该配置文件请使用常量方式定义
+ */
+define('UC_AUTH_KEY', 'G|`e.cPj,pq"BWx{L7^:*[@V&6!J=tFlSXDTA?kK'); //加密KEY
