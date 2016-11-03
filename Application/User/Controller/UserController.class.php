@@ -9,7 +9,9 @@
 
 namespace User\Controller;
 use Think\Controller;
-class UserController extends Controller {
+
+class UserController extends Controller{
+
     /**
      * 注册一个新用户
      * @param  string $username 用户名
@@ -30,7 +32,7 @@ class UserController extends Controller {
      * @return integer           登录成功-用户ID，登录失败-错误编号
      */
     public function login($username, $password, $type = 1){
-        return D('Member')->login($username, $password, $type);
+        return D('User/Member')->login($username, $password, $type);
     }
 
     /**
