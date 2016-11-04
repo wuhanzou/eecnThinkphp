@@ -13,8 +13,17 @@ function is_login(){
     if (empty($user)) {
         return 0;
     } else {
-        return session('user_auth_sign') == data_auth_sign($user) ? $user['uid'] : 0;
+        return session('user_auth_sign') == data_auth_sign($user) ? $user['id'] : 0;
     }
+}
+/**
+ * 检测当前用户是否为管理员
+ * @return boolean true-管理员，false-非管理员
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function is_administrator($id = null){
+    $id = is_null($id) ? is_login() : $id;
+    return $id && (intval($id) === C('USER_ADMINISTRATOR'));
 }
 /**
  * 字符串转换为数组，主要用于把分隔符调整到第二个参数

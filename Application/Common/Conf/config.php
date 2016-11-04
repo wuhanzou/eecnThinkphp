@@ -22,6 +22,7 @@ return array(
     'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'eecn_', // 数据库表前缀
     'DB_CHARSET'=> 'utf8', // 字符集
+    'USER_ADMINISTRATOR' => 1, //管理员用户ID
     // 显示页面Trace信息
     'SHOW_PAGE_TRACE' =>true, 
 );

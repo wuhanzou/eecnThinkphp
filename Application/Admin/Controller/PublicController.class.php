@@ -17,7 +17,7 @@ class PublicController extends Controller {
             // if(!check_verify($verify)){
             //     $this->error('验证码输入错误！');
             // }
-            /* 调用UC登录接口登录 */
+            /* 调用User用户模块接口登录 */
             $User = new UserApi;
             $uid = $User->login($username, $password);
             if(0 < $uid){ //UC登录成功
@@ -38,7 +38,7 @@ class PublicController extends Controller {
                 /* 读取数据库中的配置 */
                 $config =   S('DB_CONFIG_DATA');      //在onethink这个可能是在框架启动的时候 读取的
                 if(!$config){
-                    // $config =   D('Config')->lists();         //此功能未完成
+                    $config =   D('Config')->lists();         //此功能未完成
                     S('DB_CONFIG_DATA',$config);
                 }
                 C($config); //添加配置,C方法是ThinkPHP用于设置、获取，以及保存配置参数的方法，使用频率较高

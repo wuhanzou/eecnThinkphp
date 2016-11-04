@@ -12,28 +12,27 @@ class AdminController extends Controller {
      */
     protected function _initialize(){
         // 获取当前用户ID
-        if(defined('UID')) return ;
-        define('UID',is_login());
-        if( !UID ){// 还没登录 跳转到登录页面
+        if(defined('ID')) return ;
+        define('ID',is_login()); 
+        if( !ID ){// 还没登录 跳转到登录页面
             $this->redirect('Public/login');
         }
         /* 读取数据库中的配置 */
         $config =   S('DB_CONFIG_DATA');
         if(!$config){
-            $config =   api('Config/lists');
+            $config =   api('Config/lists');   //调用Common/Api/ConfigApi/lists类
             S('DB_CONFIG_DATA',$config);
         }
         C($config); //添加配置
-
         // 是否是超级管理员
         define('IS_ROOT',   is_administrator());
         if(!IS_ROOT && C('ADMIN_ALLOW_IP')){
-            // 检查IP地址访问
+            // 检查IP地址访问,TP框架自带的函数，获取当前的ip地址
             if(!in_array(get_client_ip(),explode(',',C('ADMIN_ALLOW_IP')))){
                 $this->error('403:禁止访问');
             }
         }
-        // 检测系统权限
+        // 检测系统权限,后期再添加
         if(!IS_ROOT){
             $access =   $this->accessControl();
             if ( false === $access ) {
@@ -55,7 +54,30 @@ class AdminController extends Controller {
 
         $this->assign('__MENU__', $this->getMenus());
     }
-
+    /**
+     * action访问控制,在 **登陆成功** 后执行的第一项权限检测任务
+     *
+     * @return boolean|null  返回值必须使用 `===` 进行判断
+     *
+     *   返回 **false**, 不允许任何人访问(超管除外)
+     *   返回 **true**, 允许任何管理员访问,无需执行节点权限检测
+     *   返回 **null**, 需要继续执行节点权限检测决定是否允许访问
+     * @author 朱亚杰  <xcoolcc@gmail.com>
+     */
+    final protected function accessControl(){
+        $allow = C('ALLOW_VISIT');
+        $deny  = C('DENY_VISIT');
+        //CONTROLLER_NAME获取控制器,ACTION_NAME获取方法名
+        $check = strtolower(CONTROLLER_NAME.'/'.ACTION_NAME);
+        //TP框架自带函数不区分大小写的in_array实现
+        if ( !empty($deny)  && in_array_case($check,$deny) ) {
+            return false;//非超管禁止访问deny中的方法
+        }
+        if ( !empty($allow) && in_array_case($check,$allow) ) {
+            return true;
+        }
+        return null;//需要检测节点权限
+    }
     /**
      * 对数据表中的单行或多行记录执行修改 GET参数id为数字或逗号分隔的数字
      *

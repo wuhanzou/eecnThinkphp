@@ -77,7 +77,7 @@ CREATE TABLE `eecn_member` (
 -- 默认用户名:admin,密码:admin
 --
 INSERT INTO `eecn_member` (`id`, `username`, `password`, `email`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', '0ed89fa24e3fb387b17cff71bb4ca002', 'admin@163.com', 1476519385, 2130706433, 1477894159, 2130706433, 1476519385, 1);
+(1, 'admin', '95f596673da5cb3c8d5ec06d753d1302', 'admin@163.com', 1476519385, 2130706433, 1477894159, 2130706433, 1476519385, 1);
 -- -----------------------------
 -- Table structure for `onethink_menu`
 -- -----------------------------
