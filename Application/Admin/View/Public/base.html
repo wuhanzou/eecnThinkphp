@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-cn" ng-app="bookStoreApp">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>后台管理平台</title>
+    <title>{$meta_title}|后台管理平台</title>
     <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap-theme.min.css">   
     <!--<link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">-->
@@ -12,38 +12,36 @@
     <!-- 页面自定义单独样式 -->
     <block name="style"></block>
 </head>
-<body>
-	
+<body>	
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
         <div class="logo"></div>
         <!-- /Logo -->
-
         <!-- 主导航 -->
         <div class="nav">
-				<ul>
-					<li><a href="{:U('Index/index')}" name="Index">首页</a></li>
-					<li><a href="{:U('Article/index')}" name="Article">内容</a></li>
-					<li><a href="{:U('User/lists')}" name="User">用户</a></li>
-					<li><a href="{:U('Config/index')}" name="Config">系统</a></li>
-				</ul>
-		</div>
+	<ul>
+		<li><a href="{:U('Index/index')}" name="Index">首页</a></li>
+		<li><a href="{:U('Article/index')}" name="Article">内容</a></li>
+		<li><a href="{:U('User/lists')}" name="User">用户</a></li>
+		<li><a href="{:U('Config/index')}" name="Config">系统</a></li>
+	</ul>
+        </div>
         <!-- /主导航 -->
 
         <!-- 用户栏 -->
         <div class="user fr">
-			<a href="javascript:;" class="user-enterance"></a>
-			<ul class="user-menu d-none">
-				<li>
-					你好
-					<em title="admin">admin</em>
-				</li>
-				<li><a href="{:U('User/nickname')}">修改昵称</a></li>
-				<li><a href="{:U('User/password')}">修改密码</a></li>
-				<li><a href="">退出登录</a></li>
-			</ul>
-		</div>
+		<a href="javascript:;" class="user-enterance"></a>
+		<ul class="user-menu d-none">
+			<li>
+				你好
+				<em title="admin">admin</em>
+			</li>
+			<li><a href="{:U('User/nickname')}">修改昵称</a></li>
+			<li><a href="{:U('User/password')}">修改密码</a></li>
+			<li><a href="">退出登录</a></li>
+		</ul>
+	</div>
     </div>
     <!-- /头部 -->
 
