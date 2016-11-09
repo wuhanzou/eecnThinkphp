@@ -6,7 +6,7 @@ namespace Admin\Controller;
  */
 class ConfigController extends AdminController {
     /**
-     * 配置管理
+     * 配置管理列表
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function index(){
@@ -27,6 +27,42 @@ class ConfigController extends AdminController {
         $this->assign('group_id',I('get.group',0));
         $this->assign('list', $list);
         $this->meta_title = '配置管理';
+        $this->display();
+    }
+    /**
+     * 新增配置
+     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     */
+    public function add(){
+        if(IS_POST){
+            $Config = D('Config');
+            $data = $Config->create();
+            if($data){
+                if($Config->add()){
+                    S('DB_CONFIG_DATA',null);
+                    $this->success('新增成功', U('index'));
+                } else {
+                    $this->error('新增失败');
+                }
+            } else {
+                $this->error($Config->getError());
+            }
+        } else {
+            $this->meta_title = '新增配置';
+            $this->assign('info',null);
+            $this->display('edit');
+        }
+    }
+     // 获取某个标签的配置参数
+    public function group() {
+        $id     =   I('get.id',1);
+        $type   =   C('CONFIG_GROUP_LIST');
+        $list   =   M("Config")->where(array('status'=>1,'group'=>$id))->field('id,name,title,extra,value,remark,type')->order('sort')->select();
+        if($list) {
+            $this->assign('list',$list);
+        }
+        $this->assign('id',$id);
+        $this->meta_title = $type[$id].'设置';
         $this->display();
     }
 

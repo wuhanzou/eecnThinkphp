@@ -1,0 +1,83 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+	<div class="sidenav">
+		<ul>
+			<li class="iterms">
+				<h3 class="open"><i></i>系统设置</h3>
+				<ul>
+					<li><a href="{:U('Config/index')}">网站设置</a></li>
+					<li><a href="">分类管理</a></li>
+					<li><a href="{:U('Config/model')}">模型管理</a></li>
+					<li><a href="" class="active">配置管理</a></li>
+					<li><a href="{:U('Config/menu')}" >菜单管理</a></li>
+					<li><a href="{:U('Config/nav')}">导航管理</a></li>
+				</ul>
+			</li>
+			<li class="iterms">
+				<h3><i></i>数据备份</h3>
+				<ul style="display: none;">
+					<li><a href="">备份数据库</a></li>
+					<li><a href="">还原数据库</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</block>
+<block name="body">
+	<div class="main-title">
+		<h2>{$info['id']?'编辑':'新增'}配置</h2>
+	</div>
+	<div class="tab-content h-and-input">
+		<form action="{:U()}" method="post">
+			<h3>配置标识<span>( 用于C函数调用，只能使用英文且不能重复 )</span></h3>
+			<input type="text" value="" />
+			<h3>配置标题<span>( （用于后台显示的配置标题） )</span></h3>
+			<input type="text" value="" />
+			<h3>排序<span>( （用于分组显示的顺序） )</span></h3>
+			<input type="text" value="" />
+			<h3>配置类型<span>（系统会根据不同类型解析配置值）</span></h3>
+			<select name="">
+				<option value="" selected="selected">顶级菜单</option>
+				<option value="">首页</option>
+				<option value="">内容</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└文档列表 </option>
+				<option value="">&nbsp;&nbsp;&nbsp;└新增 </option>
+				<option value="">&nbsp;&nbsp;&nbsp;└编辑</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└改变状态</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└保存</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└保存草稿</option>
+			</select>
+			<h3>配置分组<span>（配置分组 用于批量设置 不分组则不会显示在系统设置中）</span></h3>
+			<select name="">
+				<option value="" selected="selected">顶级菜单</option>
+				<option value="">首页</option>
+				<option value="">内容</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└文档列表 </option>
+				<option value="">&nbsp;&nbsp;&nbsp;└新增 </option>
+				<option value="">&nbsp;&nbsp;&nbsp;└编辑</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└改变状态</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└保存</option>
+				<option value="">&nbsp;&nbsp;&nbsp;└保存草稿</option>
+			</select>
+			<h3>配置值<span>（配置值）</span></h3>
+			<textarea name="value">{$info.value|default=''}</textarea>
+			<h3>配置项<span>（如果是枚举型 需要配置该项）</span></h3>
+			<textarea name="value">{$info.value|default=''}</textarea>
+			<h3>说明<span>（配置详细说明）</span></h3>
+			<textarea name="value">{$info.value|default=''}</textarea>
+			<div class="confirm-box">
+				<button type="submit" class="big-btn">确 定</button>
+				<button type="button" onclick="javascript:history.back(-1);return false;" class="big-btn">返 回</button>
+			</div>
+		</form>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		Think.setValue("type", {$info.type|default=0});
+		Think.setValue("group", {$info.group|default=0});
+		//导航高亮
+		highlight_subnav('{:U('Config/index')}');
+	</script>
+</block>
