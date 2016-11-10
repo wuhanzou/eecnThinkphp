@@ -30,41 +30,30 @@
 	<div class="tab-content h-and-input">
 		<form action="{:U()}" method="post">
 			<h3>配置标识<span>( 用于C函数调用，只能使用英文且不能重复 )</span></h3>
-			<input type="text" value="" />
+			<input type="text"  name="name" value="{$info.name|default=''}">
 			<h3>配置标题<span>( （用于后台显示的配置标题） )</span></h3>
-			<input type="text" value="" />
+			<input type="text" name="title" value="{$info.title|default=''}">
 			<h3>排序<span>( （用于分组显示的顺序） )</span></h3>
-			<input type="text" value="" />
+			<input type="text" name="sort" value="{$info.sort|default=0}">
 			<h3>配置类型<span>（系统会根据不同类型解析配置值）</span></h3>
-			<select name="">
-				<option value="" selected="selected">顶级菜单</option>
-				<option value="">首页</option>
-				<option value="">内容</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└文档列表 </option>
-				<option value="">&nbsp;&nbsp;&nbsp;└新增 </option>
-				<option value="">&nbsp;&nbsp;&nbsp;└编辑</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└改变状态</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└保存</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└保存草稿</option>
+			<select name="type">
+				<volist name="Think.config.CONFIG_TYPE_LIST" id="type">
+					<option value="{$key}">{$type}</option>
+				</volist>				
 			</select>
 			<h3>配置分组<span>（配置分组 用于批量设置 不分组则不会显示在系统设置中）</span></h3>
-			<select name="">
-				<option value="" selected="selected">顶级菜单</option>
-				<option value="">首页</option>
-				<option value="">内容</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└文档列表 </option>
-				<option value="">&nbsp;&nbsp;&nbsp;└新增 </option>
-				<option value="">&nbsp;&nbsp;&nbsp;└编辑</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└改变状态</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└保存</option>
-				<option value="">&nbsp;&nbsp;&nbsp;└保存草稿</option>
+			<select name="group">
+				<option value="0">不分组</option>
+				<volist name="Think.config.CONFIG_GROUP_LIST" id="group">
+					<option value="{$key}">{$group}</option>
+				</volist>				
 			</select>
 			<h3>配置值<span>（配置值）</span></h3>
 			<textarea name="value">{$info.value|default=''}</textarea>
 			<h3>配置项<span>（如果是枚举型 需要配置该项）</span></h3>
-			<textarea name="value">{$info.value|default=''}</textarea>
+			<textarea name="extra">{$info.extra|default=''}</textarea>
 			<h3>说明<span>（配置详细说明）</span></h3>
-			<textarea name="value">{$info.value|default=''}</textarea>
+			<textarea name="remark">{$info.remark|default=''}</textarea>
 			<div class="confirm-box">
 				<button type="submit" class="big-btn">确 定</button>
 				<button type="button" onclick="javascript:history.back(-1);return false;" class="big-btn">返 回</button>

@@ -39,6 +39,7 @@ class ConfigController extends AdminController {
             $data = $Config->create();
             if($data){
                 if($Config->add()){
+                    //清空配置信息
                     S('DB_CONFIG_DATA',null);
                     $this->success('新增成功', U('index'));
                 } else {
