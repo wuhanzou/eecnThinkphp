@@ -140,6 +140,11 @@ CREATE TABLE `eecn_config` (
 ) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='网站设置';
 
 -- -----------------------------
+-- Records of `onethink_action`
+-- -----------------------------
+INSERT INTO `eecn_config` VALUES ('', 'CONFIG_TYPE_LIST', '3', '配置类型列表', '4', '', '主要用于数据解析和页面表单的生成', '1378898976', '1379235348', '1', '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', '2');
+INSERT INTO `eecn_config` VALUES ('', 'CONFIG_GROUP_LIST', '3', '配置分组', '4', '', '配置分组', '1379228036', '1384418383', '1', '1:基本\r\n2:内容\r\n3:用户\r\n4:系统', '4');
+-- -----------------------------
 -- Table structure for `eecn_model`
 -- -----------------------------
 DROP TABLE IF EXISTS `eecn_model`;

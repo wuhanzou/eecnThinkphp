@@ -66,5 +66,40 @@ class ConfigController extends AdminController {
         $this->meta_title = $type[$id].'设置';
         $this->display();
     }
+    /**
+     * 配置排序
+     * @author huajie <banhuajie@163.com>
+     */
+    public function sort(){
+        if(IS_GET){    //选中项排序
+            $ids = I('get.ids');
+
+            //获取排序的数据
+            $map = array('status'=>array('gt',-1));
+            if(!empty($ids)){
+                $map['id'] = array('in',$ids);
+            }elseif(I('group')){
+                $map['group']   =   I('group');
+            }
+            $list = M('Config')->where($map)->field('id,title')->order('sort asc,id asc')->select();
+
+            $this->assign('list', $list);
+            $this->meta_title = '配置排序';
+            $this->display();
+        }elseif (IS_POST){     //全部排序
+            $ids = I('post.ids');
+            $ids = explode(',', $ids);
+            foreach ($ids as $key=>$value){
+                $res = M('Config')->where(array('id'=>$value))->setField('sort', $key+1);
+            }
+            if($res !== false){
+                $this->success('排序成功！',Cookie('__forward__'));
+            }else{
+                $this->error('排序失败！');
+            }
+        }else{
+            $this->error('非法请求！');
+        }
+    }
 
 }   

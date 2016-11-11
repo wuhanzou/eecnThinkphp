@@ -27,6 +27,7 @@
 	<div class="main-title">
 		<h2>配置管理 [ <present name="Think.get.group">
          <a href="{:U('index')}">全部</a><else/><strong>全部</strong></present>&nbsp;<foreach name="group" item="vo">
+        <!-- 要求group_id变量的值等于key就输出 -->
 		<neq name="group_id" value="$key">
          <a href="{:U('index?group='.$key)}">{$vo}</a><else/><strong>{$vo}</strong></neq>&nbsp;     
         </foreach> ]</h2>
@@ -60,6 +61,25 @@
 				</tr>
 			</thead>
 			<tbody>
+				<notempty name="list">
+				<volist name="list" id="config">
+					<tr>
+						<td><input class="ids row-selected" type="checkbox" name="id[]" value="{$config.id}"></td>
+						<td>{$config.id}</td>
+						<td><a href="{:U('edit?id='.$config['id'])}">{$config.name}</a></td>
+						<td>{$config.title}</td>
+						<td>{$config.group|get_config_group}</td>
+						<td>{$config.type|get_config_type}</td>
+						<td>
+							<a title="编辑" href="{:U('edit?id='.$config['id'])}">编辑</a>
+							<a class="confirm ajax-get" title="删除" href="{:U('del?id='.$config['id'])}">删除</a>
+						</td>
+					</tr>
+				</volist>
+				<else/>
+				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+				</notempty>
+				
 				<tr>
 					<td><input type="checkbox" /></td>
 					<td>3</td>
