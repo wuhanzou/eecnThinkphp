@@ -77,38 +77,16 @@
 					</tr>
 				</volist>
 				<else/>
-				<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+					<tr>
+						<td colspan="7" class="text-center"> aOh! 暂时还没有内容! </td>
+					</tr>
 				</notempty>
-				
-				<tr>
-					<td><input type="checkbox" /></td>
-					<td>3</td>
-					<td>download</td>
-					<td><a href="">下载</a></td>
-					<td>2013-11-08 14:14</td>
-					<td>正常</td>
-					<td> <a href="{:U('Config/editMenu')}">编辑</a> <a href="">删除</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" /></td>
-					<td>2</td>
-					<td>article</td>
-					<td><a href="">文章</a></td>
-					<td>2013-11-08 14:14</td>
-					<td>正常</td>
-					<td> <a href="{:U('Config/editMenu')}">编辑</a> <a href="">删除</a></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" /></td>
-					<td>3</td>
-					<td>document</td>
-					<td><a href="">文档</a></td>
-					<td>2013-11-08 14:14</td>
-					<td>正常</td>
-					<td> <a href="{:U('Config/editMenu')}">编辑</a> <a href="">删除</a></td>
-				</tr>
 			</tbody>
 		</table>
+		<!-- 分页 -->
+		<div class="page">
+		        {$_page}
+		</div>
 	</div>
 </block>
 
