@@ -67,6 +67,39 @@ class ConfigController extends AdminController {
         $this->display();
     }
     /**
+     * 编辑配置
+     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     */
+    public function edit($id = 0){
+        if(IS_POST){
+            $Config = D('Config');
+            $data = $Config->create();
+            if($data){
+                if($Config->save()){
+                    S('DB_CONFIG_DATA',null);
+                    //记录行为
+                    action_log('update_config','config',$data['id'],UID);
+                    $this->success('更新成功', Cookie('__forward__'));
+                } else {
+                    $this->error('更新失败');
+                }
+            } else {
+                $this->error($Config->getError());
+            }
+        } else {
+            $info = array();
+            /* 获取数据 */
+            $info = M('Config')->field(true)->find($id);
+
+            if(false === $info){
+                $this->error('获取配置信息错误');
+            }
+            $this->assign('info', $info);
+            $this->meta_title = '编辑配置';
+            $this->display();
+        }
+    }
+    /**
      * 配置排序
      * @author huajie <banhuajie@163.com>
      */
